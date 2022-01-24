@@ -1,3 +1,4 @@
+// Method-1: using Brute Force.
 class Solution {
     public int numIdenticalPairs(int[] nums) {
         int count=0;
@@ -7,5 +8,20 @@ class Solution {
            } 
         }
         return count;
+    }
+}
+
+// Method-2: using HashMap.
+class Solution {
+    public int numIdenticalPairs(int[] numList) {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        int ans=0;
+        for(int num:numList){
+           int sameNumCount = hm.getOrDefault(num, 0);
+            int numCount = sameNumCount + 1;
+            ans += sameNumCount;
+            hm.put(num, numCount);
+        }
+        return ans;
     }
 }
